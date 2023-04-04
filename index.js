@@ -220,7 +220,7 @@ app.get('/jobTicket', async function (req, res, next) {
 
       //Message
       let msg = '*' + maskapai + '*' + '%0a' + '*' + currency.format(harga) + '*' + '%0a' + tanggal;
-    
+      console.log(msg);
       //send Message to WA 
       for (let i = 0; i < phoneNumber.length; i++) {
         const hit = await axios.request({
