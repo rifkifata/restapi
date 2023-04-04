@@ -216,6 +216,7 @@ app.get('/jobTicket', async function (req, res, next) {
         tanggal
       }) => tanggal)
 
+      let results =[];
 
       //Message
       let msg = '*' + maskapai + '*' + '%0a' + '*' + currency.format(harga) + '*' + '%0a' + tanggal;
