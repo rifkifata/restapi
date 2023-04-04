@@ -231,6 +231,7 @@ app.get('/jobTicket', async function (req, res, next) {
           }
         })
         results.push(hit);
+        console.log(phoneNumber[i]);
       }
       const res = await Promise.all(results);
       return res.flat();
