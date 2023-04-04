@@ -216,19 +216,23 @@ app.get('/jobTicket', async function (req, res, next) {
         tanggal
       }) => tanggal)
 
+
       //Message
       let msg = '*' + maskapai + '*' + '%0a' + '*' + currency.format(harga) + '*' + '%0a' + tanggal;
-      
+    
       //send Message to WA 
       for (let i = 0; i < phoneNumber.length; i++) {
-        await axios.request({
+        const hit = await axios.request({
           method: 'POST',
           url: `https://api.callmebot.com/whatsapp.php?phone=${phoneNumber[i]}&text=${msg}&apikey=${apiKey[i]}`,
           headers: {
             'Host': 'api.callmebot.com'
           }
         })
+        results.push(hit);
       }
+      const res = await Promise.all(results);
+      return res.flat();
     })
   res.status(200).json({
     status: 'success',
